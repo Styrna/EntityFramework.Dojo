@@ -4,17 +4,15 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{6E58BD0E-C065-4F34-B7AC-32B891235392}</ProjectGuid>
-    <OutputType>Exe</OutputType>
+    <ProjectGuid>{DBDD2E1B-E136-4F2E-B50F-E0D95A0DF269}</ProjectGuid>
+    <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>EntityFramework.Dojo</RootNamespace>
-    <AssemblyName>EntityFramework.Dojo</AssemblyName>
+    <RootNamespace>EntityFramework.Data</RootNamespace>
+    <AssemblyName>EntityFramework.Data</AssemblyName>
     <TargetFrameworkVersion>v4.6</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
-    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
-    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
@@ -24,7 +22,6 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
-    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize>
     <OutputPath>bin\Release\</OutputPath>
@@ -41,18 +38,9 @@
       <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="NLog, Version=5.0.0.0, Culture=neutral, PublicKeyToken=5120e14c03d0593c, processorArchitecture=MSIL">
-      <HintPath>..\packages\NLog.5.0.0-beta06\lib\net45\NLog.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
-    <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
-    <Reference Include="System.IO.Compression" />
-    <Reference Include="System.Runtime.Serialization" />
-    <Reference Include="System.ServiceModel" />
-    <Reference Include="System.Transactions" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -61,21 +49,37 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Program.cs" />
+    <Compile Include="Class.cs" />
+    <Compile Include="Migrations\201703251502177_InitialCreate.cs" />
+    <Compile Include="Migrations\201703251502177_InitialCreate.Designer.cs">
+      <DependentUpon>201703251502177_InitialCreate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201703251549547_School_Adress_Column.cs" />
+    <Compile Include="Migrations\201703251549547_School_Adress_Column.Designer.cs">
+      <DependentUpon>201703251549547_School_Adress_Column.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201703251617035_Add_Class.cs" />
+    <Compile Include="Migrations\201703251617035_Add_Class.Designer.cs">
+      <DependentUpon>201703251617035_Add_Class.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="School.cs" />
+    <Compile Include="SchoolContext.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="App.config" />
-    <None Include="nlog.config">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\EntityFramework.Data\EntityFramework.Data.csproj">
-      <Project>{dbdd2e1b-e136-4f2e-b50f-e0d95a0df269}</Project>
-      <Name>EntityFramework.Data</Name>
-    </ProjectReference>
+    <EmbeddedResource Include="Migrations\201703251502177_InitialCreate.resx">
+      <DependentUpon>201703251502177_InitialCreate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201703251549547_School_Adress_Column.resx">
+      <DependentUpon>201703251549547_School_Adress_Column.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201703251617035_Add_Class.resx">
+      <DependentUpon>201703251617035_Add_Class.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
