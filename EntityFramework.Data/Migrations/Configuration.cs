@@ -9,8 +9,7 @@ namespace EntityFramework.Data.Migrations
     {
         public Configuration()
         {
-            AutomaticMigrationsEnabled = false;
-            ContextKey = "EntityFramework.Data.SchoolContext";
+            AutomaticMigrationsEnabled = true;
         }
 
         protected override void Seed(EntityFramework.Data.SchoolContext context)

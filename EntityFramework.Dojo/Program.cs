@@ -6,7 +6,9 @@ using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using EntityFramework.Data;
+using Microsoft.Build.Utilities;
 using NLog;
+using Logger = NLog.Logger;
 
 namespace EntityFramework.Dojo
 {
@@ -22,32 +24,32 @@ namespace EntityFramework.Dojo
                 context.Database.Log = (message) => _log.Debug(message);
 
                 //---------------------------------Add to table
-                //var school = new School
-                //{
-                //    Name = "89",
-                //    Adress = "Szkolne"
-                //};
+                var school = new School
+                {
+                    Name = "89",
+                    Adress = "Szkolne"
+                };
 
-                //var class1a = new Class
-                //{
-                //    Name = "1a",
-                //    SchoolId = 1
-                //};
-                //var class1b = new Class
-                //{
-                //    Name = "1b",
-                //    SchoolId = 1
-                //};
+                var class1a = new Class
+                {
+                    Name = "1a",
+                    SchoolId = 1
+                };
+                var class1b = new Class
+                {
+                    Name = "1b",
+                    SchoolId = 1
+                };
 
-                //context.Schools.Add(school);
-                //_log.Info(school.Name);
-                //_log.Info(school.Adress);
-                //context.Classes.AddRange(new[] { class1a, class1b });
-                //_log.Info(class1a.Name);
-                //_log.Info(class1a.SchoolId);
-                //_log.Info(class1b.Name);
-                //_log.Info(class1b.SchoolId);
-                //context.SaveChanges();
+                context.Schools.Add(school);
+                _log.Info(school.Name);
+                _log.Info(school.Adress);
+                context.Classes.AddRange(new[] { class1a, class1b });
+                _log.Info(class1a.Name);
+                _log.Info(class1a.SchoolId);
+                _log.Info(class1b.Name);
+                _log.Info(class1b.SchoolId);
+                context.SaveChanges();
 
                 //-----------------------------Attach to value in table
                 //var school = new School()

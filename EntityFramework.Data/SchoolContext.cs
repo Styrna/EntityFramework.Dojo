@@ -16,5 +16,11 @@ namespace EntityFramework.Data
 
         public DbSet<School> Schools { get; set; }
         public DbSet<Class> Classes { get; set; }
+        public DbSet<Student> Students { get; set; }
+        public DbSet<HeadTeacher> HeadTeachers { get; set; }
+        public DbSet<Teacher> Teachers { get; set; }
+        public DbSet<Person> Persons { get; set; }
+        public DbSet<Subject> Subjects { get; set; }
+        public DbSet<Topic> Topics { get; set; }
     }
 }
