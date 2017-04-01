@@ -40,6 +40,22 @@ namespace EntityFramework.Dojo
                     Name = "1b",
                     SchoolId = 1
                 };
+                var student1 = new Student
+                {
+                    Name = "Pawel"
+                };
+                var student2 = new Student
+                {
+                    Name = "Piotr"
+                };
+                var subject1 = new Subject
+                {
+                    Name = "Matematyka"
+                };
+                var subject2 = new Subject
+                {
+                    Name = "Biologia"
+                };
 
                 context.Schools.Add(school);
                 _log.Info(school.Name);
