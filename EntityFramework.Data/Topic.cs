@@ -13,8 +13,12 @@ namespace EntityFramework.Data
         public long Id { get; set; }
         public string Name { get; set; }
 
+        public long TeacherId { get; set; }
+        public virtual Teacher Teacher { get; set; }
+
+        public long SubjectId { get; set; }
+        public virtual Subject Subject { get; set; }
+
         public ICollection<Student> Students { get; set; }
-        public ICollection<Subject> Subjects { get; set; }
-        public ICollection<Teacher> Teachers { get; set; }
     }
 }

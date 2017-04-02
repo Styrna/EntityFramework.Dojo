@@ -16,8 +16,10 @@ namespace EntityFramework.Data
         public long SchoolId { get; set; }
         public virtual School School { get; set; }
 
-        public virtual HeadTeacher HeadTeacher { get; set; }
+        public long HeadTeacherId { get; set; }
+        public virtual Teacher HeadTeacher { get; set; }
 
+        public ICollection<Teacher> Teachers { get; set; }
         public ICollection<Student> Students { get; set; }
         public ICollection<Subject> Subjects { get; set; }
     }

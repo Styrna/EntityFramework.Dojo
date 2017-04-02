@@ -17,5 +17,10 @@ namespace EntityFramework.Data
         public string Adress { get; set; }
 
         public ICollection<Class> Classes { get; set; }
+
+        public School()
+        {
+            Classes = new List<Class>();
+        }
     }
 }

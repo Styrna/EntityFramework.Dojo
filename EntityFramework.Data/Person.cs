@@ -12,8 +12,8 @@ namespace EntityFramework.Data
         [Key]
         public long Id { get; set; }
 
-        public ICollection<Student> Students { get; set; }
-        public ICollection<Teacher> Teachers { get; set; }
-        public ICollection<HeadTeacher> HeadTeachers { get; set; }
+        public string Name { get; set; }
+
+        public string Surname { get; set; }
     }
 }

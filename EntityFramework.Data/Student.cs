@@ -11,9 +11,14 @@ namespace EntityFramework.Data
     {
         [Key]
         public long Id { get; set; }
-        public string Name { get; set; }
-    
-        public ICollection<Class> Classes { get; set; }
+
+        public long PersonId { get; set; }
+        public Person Person { get; set; }
+
+        public long ClassId { get; set; }
+        public virtual Class Class { get; set; }
+
+
         public ICollection<Topic> Topics { get; set; }
     }
 }

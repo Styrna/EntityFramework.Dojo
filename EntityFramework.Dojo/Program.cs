@@ -24,55 +24,55 @@ namespace EntityFramework.Dojo
                 context.Database.Log = (message) => _log.Debug(message);
 
                 //---------------------------------Add to table
-                var school = new School
-                {
-                    Name = "89",
-                    Adress = "Szkolne"
-                };
+                //var school = new School
+                //{
+                //    Name = "89",
+                //    Adress = "Szkolne"
+                //};
+                //context.Schools.Add(school);
+                //var class1a = new Class
+                //{
+                //    Name = "1a",
+                //    School = school
+                //};
+                //context.Classes.Add(class1a);
+                //var class1b = new Class
+                //{
+                //    Name = "1b",
+                //    School = school
+                //};
+                //context.Classes.Add(class1b);
 
-                var class1a = new Class
-                {
-                    Name = "1a",
-                    SchoolId = 1
-                };
-                var class1b = new Class
-                {
-                    Name = "1b",
-                    SchoolId = 1
-                };
-                var student1 = new Student
-                {
-                    Name = "Pawel"
-                };
-                var student2 = new Student
-                {
-                    Name = "Piotr"
-                };
-                var subject1 = new Subject
-                {
-                    Name = "Matematyka"
-                };
-                var subject2 = new Subject
-                {
-                    Name = "Biologia"
-                };
+                //var piotr = new Person()
+                //{
+                //    Name = "Piotr",
+                //};
+                //context.Persons.Add(piotr);
+                //var teacher = new Teacher()
+                //{
+                //    Person = piotr,
+                //};
+                //context.Teachers.Add(teacher);
 
-                context.Schools.Add(school);
-                _log.Info(school.Name);
-                _log.Info(school.Adress);
-                context.Classes.AddRange(new[] { class1a, class1b });
-                _log.Info(class1a.Name);
-                _log.Info(class1a.SchoolId);
-                _log.Info(class1b.Name);
-                _log.Info(class1b.SchoolId);
+                //var pawel = new Person()
+                //{
+                //    Name = "Pawel"
+                //};
+                //context.Persons.Add(pawel);
+                //var student = new Student()
+                //{
+                //    Person = pawel,
+                //    Class = class1a,
+                //};
+                //context.Students.Add(student);
+                
+                var school = new School() { Id = 1 };
+                context.Schools.Attach(school);
+                context.Schools.Remove(school);
+
                 context.SaveChanges();
 
-                //-----------------------------Attach to value in table
-                //var school = new School()
-                //{
-                //    Id = 1
-                //};
-
+               
                 //context.Schools.Attach(school);
                 //context.Schools.Remove(school);
                 //context.SaveChanges();
