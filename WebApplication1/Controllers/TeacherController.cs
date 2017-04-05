@@ -23,6 +23,8 @@ namespace WebApplication1.Controllers
         [HttpGet]
         public IEnumerable<TeacherClassDto> GetClassesWithTeacher(string topicName)
         {
+
+            throw new Exception("TEST");
             return _teacherDal.GetTeacherClassDtos(topicName);
         }
     }
