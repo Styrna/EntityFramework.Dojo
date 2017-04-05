@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EntityFramework.Dojo", "Ent
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EntityFramework.Data", "EntityFramework.Data\EntityFramework.Data.csproj", "{DBDD2E1B-E136-4F2E-B50F-E0D95A0DF269}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebApplication1", "WebApplication1\WebApplication1.csproj", "{042E0FE2-0F83-4140-B890-78CA859C887D}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{DBDD2E1B-E136-4F2E-B50F-E0D95A0DF269}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{DBDD2E1B-E136-4F2E-B50F-E0D95A0DF269}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{DBDD2E1B-E136-4F2E-B50F-E0D95A0DF269}.Release|Any CPU.Build.0 = Release|Any CPU
+		{042E0FE2-0F83-4140-B890-78CA859C887D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{042E0FE2-0F83-4140-B890-78CA859C887D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{042E0FE2-0F83-4140-B890-78CA859C887D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{042E0FE2-0F83-4140-B890-78CA859C887D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
