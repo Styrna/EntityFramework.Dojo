@@ -38,12 +38,15 @@ namespace WebApplication1.Dal
         }
 
         //Content-Type: application/json
-//        {  
-//   "teacherDto":{  
-//      "Name":"Lukasz",
-//      "Surname":"Bergiel"
-//   }
-//}
+        //        {  
+        //   "teacherDto":{  
+        //      "Name":"Lukasz",
+        //      "Surname":"Bergiel"
+        //   }
+        //}
+
+        //async await 
+        // https://robinsedlaczek.com/2014/05/20/improve-server-performance-with-asynchronous-webapi/
         public long CreateTeacher(TeacherDto teacherDto)
         {
             using (var context = _contextFactory.Create())
