@@ -14,10 +14,25 @@ namespace WebApplication1.Controllers
     {
         private readonly ITeacherDal _teacherDal;
 
-        public TeacherController()
+        public TeacherController(ITeacherDal teacherDal)
         {
-            _teacherDal = new TeacherDal();
+            _teacherDal = teacherDal;
         }
+
+
+        [HttpPut]
+        public long PutTeacher(TeacherDto teacherDto)
+        {
+           return _teacherDal.CreateTeacher(teacherDto);
+        }
+
+        [HttpDelete]
+        public void DeleteTeacher(long id)
+        {
+            _teacherDal.DeleteTeacher(id);
+        }
+
+        //TODO UpdateTeacher
 
         // GET teacher/topicName
         [HttpGet]
