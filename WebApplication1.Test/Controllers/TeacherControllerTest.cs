@@ -27,5 +27,34 @@ namespace WebApplication1.Test.Controllers
         }
         
         //TODO tests for delete and update
+        public void DeleteTeacher()
+        {
+            //Arrange
+            var teacherDal = Substitute.For<ITeacherDal>();
+            var teacherController = new TeacherController(teacherDal);
+            
+            //Act
+            teacherController.DeleteTeacher(1);
+
+            //Assert
+            // ????????
+        }
+
+        public void UpdateTeacher()
+        {
+            //Arrange
+            var teacherDal = Substitute.For<ITeacherDal>();
+            var teacherController = new TeacherController(teacherDal);
+
+            //Act
+            teacherController.UpdateTeacher(1, new TeacherDto()
+            {
+                Name = "Pawel",
+                Surname = "Styrna"
+            });
+
+            //Assert
+            // ????????
+        }
     }
 }

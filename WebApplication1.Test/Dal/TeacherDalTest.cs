@@ -47,6 +47,69 @@ namespace WebApplication1.Test.Dal
         }
 
         //TODO DeleteTeacherTest
+        [Test]
+        public void DeleteTeacher()
+        {
+            //Arrange
+            var contexFactory = Substitute.For<IContextFactory>();
+            var teacherDal = new TeacherDal(contexFactory);
+            var context = Substitute.For<SchoolContext>();
+            var teacherDbSet = Substitute.For<DbSet<Teacher>>();
 
+            contexFactory.Create().Returns(context);
+            context.Teachers = teacherDbSet;
+
+            teacherDbSet.Attach(Arg.Do<Teacher>(t =>
+            t.Person = new Person()
+                {
+                    Name = "Pawel",
+                    Surname = "Styrna"
+                }
+            ));
+
+            //Act
+            teacherDal.DeleteTeacher(1);
+
+            //Assert
+            teacherDbSet.Received().Attach(Arg.Is<Teacher>(t => t.Id == 1));
+            teacherDbSet.Received().Remove(Arg.Is<Teacher>(t => t.Id == 1 && t.Person.Name == "Pawel" && t.Person.Surname == "Styrna"));
+            context.Received().SaveChanges();
+        }
+
+        [Test]
+        public void UpdateTeacher()
+        {
+            //Arrange
+            var contexFactory = Substitute.For<IContextFactory>();
+            var teacherDal = new TeacherDal(contexFactory);
+            var context = Substitute.For<SchoolContext>();
+            var teacherDbSet = Substitute.For<DbSet<Teacher>>();
+
+            contexFactory.Create().Returns(context);
+            context.Teachers = teacherDbSet;
+
+            var teacherDto = new TeacherDto()
+            {
+                Name = "Jacek",
+                Surname = "Maslak"
+            };
+
+            teacherDbSet.Attach(Arg.Do<Teacher>(t =>
+            t.Person = new Person()
+            {
+                Name = "Pawel",
+                Surname = "Styrna"
+            }
+            ));
+
+            //Act
+            teacherDal.UpdateTeacher(1, teacherDto);
+
+            //Assert
+            teacherDbSet.Received().Attach(Arg.Is<Teacher>(t => t.Id == 1));
+            context.ChangeTracker.Entries().Equals(teacherDto);
+            context.Received().SaveChanges();
+            
+        }
     }
 }

@@ -69,7 +69,7 @@ namespace WebApplication1.Dal
 
         public void DeleteTeacher(long id)
         {
-            using (var context = new SchoolContext())
+            using (var context = _contextFactory.Create())
             {
                 var teacher = new Teacher() {Id = id};
                 context.Teachers.Attach(teacher);
@@ -80,17 +80,21 @@ namespace WebApplication1.Dal
         // czy trzeba robic zabezpieczenia np jak id nie ma w bazie czy juz wabapi ma to wbudowane ? 
         public void UpdateTeacher(long id, TeacherDto teacherDto)
         {
-            using (var context = new SchoolContext())
+            using (var context = _contextFactory.Create())
             {
                 var teacher = new Teacher() { Id = id };
                 context.Teachers.Attach(teacher);
+                var entry = context.Entry(teacher);
                 if (teacher.Person.Name != teacherDto.Name && teacherDto.Name != null)
                 {
                     teacher.Person.Name = teacherDto.Name;
+                    // czegu tutaj uzyc co to jest referacne, collection, property, complex property 
+                    entry.Property(e => e.Person.Name).IsModified = true;
                 }
                 if (teacher.Person.Surname != teacherDto.Surname && teacherDto.Surname != null)
                 {
                     teacher.Person.Surname = teacherDto.Surname;
+                    entry.Property(e => e.Person).IsModified = true;
                 }
                 context.SaveChanges();
             }
