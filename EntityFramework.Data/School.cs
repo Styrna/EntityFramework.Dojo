@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace EntityFramework.Data
 {
-    public class School
+    public class School : IEntity
     {
         [Key]
         public long Id { get; set; }

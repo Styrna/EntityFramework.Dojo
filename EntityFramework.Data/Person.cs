@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace EntityFramework.Data
 {
-    public class Person
+    public class Person : IEntity, IValidatableObject
     {
         [Key]
         public long Id { get; set; }
@@ -16,7 +16,12 @@ namespace EntityFramework.Data
 
         public string Surname { get; set; }
 
-        
-
+        public IEnumerable<ValidationResult> Validate(ValidationContext validationContext)
+        {
+            if(Name != null)
+                if(Name.IndexOfAny(new char[] { '*', '&', '#' }) != -1)
+                    yield return new ValidationResult
+                  ("Person Name cannont include characters like *,&,#");
+        }
     }
 }

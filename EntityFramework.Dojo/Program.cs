@@ -9,6 +9,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using System.Xml.Serialization;
 using EntityFramework.Data;
+using EntityFramework.Data.Validation;
 using Microsoft.Build.Utilities;
 using Newtonsoft.Json;
 using NLog;
@@ -28,6 +29,8 @@ namespace EntityFramework.Dojo
                 context.Database.Log = (message) => _log.Debug(message);
 
 
+               
+
 
                 var a = new A();
                 var b = new B();
@@ -37,6 +40,12 @@ namespace EntityFramework.Dojo
 
 
                 var techers = new Teacher[] {};
+
+                var teacher = new Teacher();
+                ;
+
+                var validator = new EntityValidator();
+                validator.Validate(teacher);
                 //---------------------------------Selects
 
                 //find all classes that already had Entity Framework topic in subject Programowainie
@@ -61,7 +70,7 @@ namespace EntityFramework.Dojo
 
                 //-------------------------serialization
                 //var person = new Person() { Surname = "Styrna", Name = "Piotr"};
-                
+
                 //var serializer = new XmlSerializer(typeof(Person));
                 //using (StringWriter textWriter = new StringWriter())
                 //{
@@ -71,7 +80,7 @@ namespace EntityFramework.Dojo
 
                 //var personString = "{\"Id\":0,\"Name\":\"Piotr\",\"Surname\":\"Styrna\"}";
                 //_log.Debug(JsonConvert.SerializeObject(person));
-                
+
 
                 //var newPerson = JsonConvert.DeserializeObject(personString,typeof(Person));
                 //var deserializedType = newPerson.GetType();

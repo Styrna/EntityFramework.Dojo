@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace EntityFramework.Data
 {
-    public class Teacher
+    public class Teacher : IEntity
     {
         [Key]
         public long Id { get; set; }
@@ -18,5 +18,6 @@ namespace EntityFramework.Data
         public ICollection<Class> Classes { get; set; }
         public ICollection<Subject> Subjects { get; set; }
         public ICollection<Topic> Topics { get; set; }
+        
     }
 }

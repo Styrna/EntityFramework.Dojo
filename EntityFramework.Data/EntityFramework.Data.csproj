@@ -51,6 +51,7 @@
   <ItemGroup>
     <Compile Include="Class.cs" />
     <Compile Include="ContextFactory.cs" />
+    <Compile Include="IEntity.cs" />
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Person.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -60,6 +61,10 @@
     <Compile Include="Subject.cs" />
     <Compile Include="Teacher.cs" />
     <Compile Include="Topic.cs" />
+    <Compile Include="Validation\EntityValidator.cs" />
+    <Compile Include="Validation\Validators\IValidator.cs" />
+    <Compile Include="Validation\Validators\Teacher1Validator.cs" />
+    <Compile Include="Validation\Validators\Teacher2Validator.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

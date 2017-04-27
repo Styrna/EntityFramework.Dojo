@@ -36,17 +36,16 @@ namespace WebApplication1.Test.Dal
             teacherDbSet.Add(Arg.Do<Teacher>(t => t.Id = 1));
 
             //Act
-            var id = teacherDal.CreateTeacher(teacherDto);
+            var id = teacherDal.CreateTeacher(teacherDto).Result;
 
             //Assert
             teacherDbSet.Received().Add(Arg.Is<Teacher>(
                 t => t.Person.Name == teacherDto.Name
                      && t.Person.Surname == teacherDto.Surname));
-            context.Received().SaveChanges();
+            context.Received().SaveChangesAsync();
             Assert.That(id, Is.EqualTo(1));
         }
-
-        //TODO DeleteTeacherTest
+        
         [Test]
         public void DeleteTeacher()
         {
@@ -58,21 +57,13 @@ namespace WebApplication1.Test.Dal
 
             contexFactory.Create().Returns(context);
             context.Teachers = teacherDbSet;
-
-            teacherDbSet.Attach(Arg.Do<Teacher>(t =>
-            t.Person = new Person()
-                {
-                    Name = "Pawel",
-                    Surname = "Styrna"
-                }
-            ));
-
+            
             //Act
             teacherDal.DeleteTeacher(1);
 
             //Assert
             teacherDbSet.Received().Attach(Arg.Is<Teacher>(t => t.Id == 1));
-            teacherDbSet.Received().Remove(Arg.Is<Teacher>(t => t.Id == 1 && t.Person.Name == "Pawel" && t.Person.Surname == "Styrna"));
+            teacherDbSet.Received().Remove(Arg.Is<Teacher>(t => t.Id == 1));
             context.Received().SaveChanges();
         }
 

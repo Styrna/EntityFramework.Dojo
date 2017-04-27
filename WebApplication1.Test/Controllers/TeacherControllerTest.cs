@@ -20,7 +20,7 @@ namespace WebApplication1.Test.Controllers
             teacherDal.CreateTeacher(teacherDto).Returns(1);
 
             //Act
-            var id = teacherController.PutTeacher(teacherDto);
+            var id = teacherController.PutTeacher(teacherDto).Result;
 
             //Assert
             Assert.That(id, Is.EqualTo(1));
