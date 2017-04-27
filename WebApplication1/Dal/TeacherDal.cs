@@ -12,6 +12,7 @@ namespace WebApplication1.Dal
         IEnumerable<TeacherClassDto> GetTeacherClassDtos(string topicName);
         long CreateTeacher(TeacherDto teacherDto);
         void DeleteTeacher(long id);
+        void UpdateTeacher(long id, TeacherDto teacherDto);
     }
 
     public class TeacherDal : ITeacherDal
@@ -73,6 +74,24 @@ namespace WebApplication1.Dal
                 var teacher = new Teacher() {Id = id};
                 context.Teachers.Attach(teacher);
                 context.Teachers.Remove(teacher);
+                context.SaveChanges();
+            }
+        }
+        // czy trzeba robic zabezpieczenia np jak id nie ma w bazie czy juz wabapi ma to wbudowane ? 
+        public void UpdateTeacher(long id, TeacherDto teacherDto)
+        {
+            using (var context = new SchoolContext())
+            {
+                var teacher = new Teacher() { Id = id };
+                context.Teachers.Attach(teacher);
+                if (teacher.Person.Name != teacherDto.Name && teacherDto.Name != null)
+                {
+                    teacher.Person.Name = teacherDto.Name;
+                }
+                if (teacher.Person.Surname != teacherDto.Surname && teacherDto.Surname != null)
+                {
+                    teacher.Person.Surname = teacherDto.Surname;
+                }
                 context.SaveChanges();
             }
         }

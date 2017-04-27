@@ -20,7 +20,7 @@ namespace EntityFramework.Data
 
         public School()
         {
-            Classes = new List<Class>();
+            Classes = new List<Class>(); //to jest dla tego żeby mozna bylo dodac szkole z pusta lista class ?
         }
     }
 }

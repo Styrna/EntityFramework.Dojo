@@ -34,6 +34,12 @@ namespace WebApplication1.Controllers
 
         //TODO UpdateTeacher
 
+        [HttpPut]
+        public void UpdateTeacher(long id, TeacherDto teacherDto)
+        {
+            _teacherDal.UpdateTeacher(id, teacherDto);
+        }
+
         // GET teacher/topicName
         [HttpGet]
         public IEnumerable<TeacherClassDto> GetClassesWithTeacher(string topicName)
